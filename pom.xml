@@ -24,7 +24,6 @@
     <properties>
         <jdk.version>1.8</jdk.version>
         <java.encoding>UTF-8</java.encoding>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
@@ -77,11 +76,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!--<version>3.8.1</version>-->
                 <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                    <source>${java.encoding}</source>
-                    <target>${java.encoding}</target>
+                    <encoding>${java.encoding}</encoding>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                 </configuration>
             </plugin>
         </plugins>
