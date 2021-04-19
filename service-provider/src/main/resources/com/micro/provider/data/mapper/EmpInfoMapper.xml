@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.micro.provider.data.mapper.EmpInfoMapper">
+    <resultMap id="BaseResultMap" type="com.micro.provider.data.entity.EmpInfo">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="ID" jdbcType="DECIMAL" property="id"/>
+        <result column="EMP_NAME" jdbcType="VARCHAR" property="empName"/>
+        <result column="EMP_ADDRESS" jdbcType="VARCHAR" property="empAddress"/>
+        <result column="EMP_SALARY" jdbcType="DECIMAL" property="empSalary"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        ID, EMP_NAME, EMP_ADDRESS, EMP_SALARY
+    </sql>
+
+    <!--<select id="getEmpInfoList" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT *
+        FROM EMP_INFO
+        <where>
+            <if test="empName!=null and empName!=''">
+                AND INSTR(EMP_NAME, #{empName}) > 0
+            </if>
+        </where>
+    </select>-->
+
+    <!--带条件模糊分页查询-->
+    <select id="getEmpInfosByCondition" parameterType="com.micro.provider.data.entity.EmpInfo"
+            resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM EMP_INFO
+        <where>
+            <if test="param.empName!=null and param.empName!=''">
+                AND INSTR(EMP_NAME, #{param.empName}) > 0
+            </if>
+            <if test="param.empAddress!=null and param.empAddress!=''">
+                AND INSTR(EMP_ADDRESS, #{param.empAddress}) > 0
+            </if>
+        </where>
+    </select>
+</mapper>
