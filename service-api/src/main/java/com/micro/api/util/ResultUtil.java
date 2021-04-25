@@ -23,6 +23,11 @@ public class ResultUtil {
         return success(null);
     }
 
+    /**
+     * 适用于在业务不抛异常(error)的情况下，非正常返回的情况
+     *
+     * @return
+     */
     public static ApiResult fail() {
         ApiResult result = new ApiResult();
         result.setCode(ResultCode.FAIL.getCode());
@@ -30,6 +35,11 @@ public class ResultUtil {
         return result;
     }
 
+    /**
+     * 用于catch块里面返回真实异常的情况
+     *
+     * @return
+     */
     public static ApiResult error() {
         ApiResult result = new ApiResult();
         result.setCode(ResultCode.ERROR.getCode());
