@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.micro.api.factory.ProviderServiceFallbackFactory,\
-  com.micro.api.factory.EmpServiceFallbackFactory
+  com.micro.api.factory.EmpServiceFallbackFactory,\
+  com.micro.api.factory.AsyncServiceFallbackFactory
